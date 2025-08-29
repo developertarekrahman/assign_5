@@ -6,7 +6,7 @@ Answer:
 3. wuerySelectior/querySelectorAll is something that we can select elements with css selectior .Here querySelector give us the first elemest with
    selector and the querySelectorAll give us all elements with the selected selector.
 
-2. How do you create and insert a new element into the DOM?
+2.How do you create and insert a new element into the DOM?
 
 Answer: For creating a new element I use into the DOM is document.createNewElement() and for inserting new elements I use append.child or insertBefore.
 
