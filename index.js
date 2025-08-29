@@ -1,3 +1,5 @@
+const historyData=[];
+
 // heart icon clicked functionalities
 
 let num = 0;
@@ -9,6 +11,10 @@ for(let heart of hearts){
         count.innerText=num;
     })
 }
+
+
+
+
 
 //call functionalities
 
@@ -26,11 +32,27 @@ for (let i=0; i<callbtn.length;i++){
             alert(`Calling ${names[i].innerText} at ${numbers[i].innerText}`);
             coin=coin-20;
             coinCount.innerText=coin;
+
+            const data={
+            name: names[i].innerText,
+            number: numbers[i].innerText,
+            date: new Date().toLocaleTimeString()
+        };
+        historyData.push(data)
+
+        updateHistory();
+
+
+
         }
         else{
             alert("You have no sufiicient coin to call")
         }
-    })
+    
+        
+        
+
+})
 }
 
 
@@ -65,4 +87,29 @@ for (let i = 0; i < copyButtons.length; i++) {
 
 //history section
 
+function updateHistory(){
+    const historyContainer=document.getElementById('history-container');
 
+    historyContainer.innerHTML="";
+
+
+    for(const data of historyData){
+        const div=document.createElement("div");
+        div.className ="bg-[#FAFAFA] p-4 rounded-[8px] mb-2";
+        div.innerHTML=`
+        <div class="flex justify-between items-center">
+                  <div>
+                    <h1 class="inter font-semibold text-[18px]">${data.name}</h1>
+                    <h1 class="inter">${data.number}</h1>
+                </div>
+                <h1>${data.date}</h1>
+              </div>
+        `;
+        historyContainer.appendChild(div);
+    }
+};
+
+document.getElementById('clear-history').addEventListener('click',function(){
+    historyData.length=0;
+    updateHistory();
+});
